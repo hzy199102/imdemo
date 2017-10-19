@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>文件跨域上传代理页面</title>
+
+</head>
+
+<body>
+<span id="name"></span>
+</body>
+</html>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    var code = getQueryString("code");
+    var msg =  getQueryString("msg");
+    var url =  getQueryString("url");
+    parent.imdemo.conn.upload.crossDomainFunction(code,msg,url);
+
+    //parent得到跨域页面root.coding123.net/a.html的引用
+    //parent.opener得到同一个域名下的h.guilinjiaoyu.cn/test.asp的引用
+    //2者结合使用没有报跨域，而parent.opener是同一个域下的，所以就可以互相操作了
+    //parent.opener.setInputValue();//调用同一个域名下的页面回调
+    //上面的代码即使不用回调，由于在同一个域名下，也可以操作test.asp页面上的dom对象，如下
+    //parent.opener.document.getElementById('name').innerHTML="123";//这样也是可以的
+    //parent.document.getElementById('name').innerHTML="code="+code+",msg="+msg;//这样也是可以的
+    //parent.close()
+</script>

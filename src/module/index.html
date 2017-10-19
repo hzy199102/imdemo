@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>imdemo</title>
+  <script type="text/javascript" src="../../static/config.js"></script>
+</head>
+<body>
+</body>
+</html>
+<script>
+  if (localStorage.getItem('imUserID')) {
+     location.href = window.webim_config.publicPath + 'module/im.html'
+  } else {
+     location.href = window.webim_config.publicPath + 'module/login.html'
+  }
+</script>

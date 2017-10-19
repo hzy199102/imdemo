@@ -1,2 +1,5 @@
 build/*.js
 config/*.js
+src/assets/**
+src/components/im/basic/message/textMsg.vue
+src/module/im/basic/message/textMsg.vue
